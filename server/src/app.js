@@ -11,8 +11,9 @@ const app = express();
 app.use(cors());
 // enables my express json 
 app.use(express.json());
+const PORT = process.env.PORT
 
-//create a mysql connection 
+//1. create a mysql connection 
 const pool = mysql
 .createPool({
     host: process.env.HOST,
@@ -21,17 +22,24 @@ const pool = mysql
     database : process.env.DATABASE,
 }).promise();
 
-//connect to database
+//2. connect to database
 
-
+//check my get function is working
 app.get('/', (req,res)=>{
     res.send({
         message: "Welcome!"
     })
 })
 
-const PORT = process.env.PORT
+//app.post
+//connected to my frontend: authentication
+app.post('/register', (req,res)=>{
+    res.send({
+        message: 'Hello ${req.body.email}!, User was successfully registered'
+    })
+})
 
-app.listen(PORT,()=> {
-    console.log('http://localhost:'+PORT);
-});
+
+app.listen(process.env.PORT || 8081)
+    // console.log('http://localhost:'+PORT);
+// });
