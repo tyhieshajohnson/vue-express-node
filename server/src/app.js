@@ -24,21 +24,12 @@ const pool = mysql
 
 //2. connect to database
 
-//check my get function is working
+//check my get function is working - json file
 app.get('/', (req,res)=>{
     res.send({
         message: "Welcome!"
     })
 })
-
-//app.post
-//connected to my frontend: authentication
-app.post('/register', (req,res)=>{
-    res.send({
-        message: 'Hello ${req.body.email}!, User was successfully registered'
-    })
-})
-
 
 app.listen(process.env.PORT || 8081)
     // console.log('http://localhost:'+PORT);
